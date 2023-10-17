@@ -29,7 +29,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department getDepartmentId(String departmentId) {
+    public Department getByDepartmentId(String departmentId) {
         return departmentRepository.getByDepartmentId(departmentId);
     }
 
@@ -38,10 +38,19 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentRepository.save(department);
     }
 
+
+
     @Override
-    public void deleteDepartmentId(String departmentId) {
-        departmentRepository.deleteByDepartmentId(departmentId);
+    public Department getById(Long id) {
+        return departmentRepository.getById(id);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        departmentRepository.deleteById(id);
+    }
+
+
 }
 
 

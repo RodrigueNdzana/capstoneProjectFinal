@@ -1,4 +1,7 @@
 package ac.za.mycput.service.impl;
+/*
+
+ */
 
 import ac.za.mycput.entity.Course;
 import ac.za.mycput.repository.CourseRepository;
@@ -26,10 +29,10 @@ public class CourseServiceImpl implements CourseService {
         return courseRepository.save(course);
     }
 
-    @Override
-    public Course findCourseByCode(String courseCode) {
-        return courseRepository.findCourseByCourseCode(courseCode);
-    }
+//    @Override
+//    public Course findCourseByCode(String courseCode) {
+//        return courseRepository.findCourseByCourseCode(courseCode);
+//    }
 
     @Override
     public Course updateCourse(Course course) {
@@ -41,4 +44,16 @@ public class CourseServiceImpl implements CourseService {
         courseRepository.deleteCourseById(id);
     }
 
+    @Override
+    public Course getCourseById(Long id) {
+        return courseRepository.findCourseById(id);
+    }
+
+    @Override
+    public Course getByCourseCode(String courseCode) {
+        return courseRepository.getByCourseCode(courseCode);
+    }
+
 }
+
+

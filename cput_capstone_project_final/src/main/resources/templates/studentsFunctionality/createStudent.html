@@ -46,11 +46,11 @@
       <div th:if="${param.success}">
         <div class="alert alert-info">
           The Student Were created successfully !
-          <a style="color:red"href="/students">click here to view the created student</a>
+          <a style="color:red"href=" /students">click here to view the created student</a>
         </div>
       </div>
       <div class = "card-body">
-        <form th:action="@{/students}" th:object = "${student}" method="POST">
+        <form th:action="@{/students}" th:object = "${student}"method="POST" >
           <div class ="form-group">
             <label> First Name </label>
             <input
@@ -65,7 +65,7 @@
           </div>
 
           <div class ="form-group">
-            <label> Student Last Name </label>
+            <label> Last Name </label>
             <input
                     type = "text"
                     name = "lastName"
@@ -91,7 +91,9 @@
                th:if="${#fields.hasErrors('email')}"></p>
           </div>
 
-          <div class = "box-footer">
+
+
+            <div class = "box-footer">
             <button type="submit" class = "btn btn-primary">
               Submit
             </button>

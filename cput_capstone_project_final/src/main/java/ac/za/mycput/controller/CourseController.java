@@ -1,9 +1,17 @@
 package ac.za.mycput.controller;
 
+/* Author : Rodrigue Ndzana , 219384096
+Handle request made by the client
+
+ */
+
+
+
+
 
 import ac.za.mycput.entity.Course;
-import ac.za.mycput.entity.Student;
 import ac.za.mycput.service.Interface.CourseService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,7 +19,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@CrossOrigin()
+@CrossOrigin(origins = "http://localhost:8080")
 public class CourseController {
 
     private CourseService courseService;
@@ -21,55 +29,66 @@ public class CourseController {
         this.courseService = courseService;
     }
 
+//    @PostMapping("/resetSuccessMessageCourse")
+//    public ResponseEntity<Void> resetSuccessMessage(HttpSession session) {
+//        session.removeAttribute("successMessage");
+//        return ResponseEntity.ok().build();
+//    }
     // handler method to handle list students and return mode and view
-    @GetMapping("/course")
+    @GetMapping("/courses")
     public String listCourses(Model model) {
         model.addAttribute("courses", courseService.getAllCourses());
-        return "/courseFunctionality/course";
+        return "/courseFunctionality/courses"; // return the front-end  view
     }
-
-    @GetMapping("/course/new")
+    // request to get the add course page
+    @GetMapping("/courses/new")
     public String createCourseForm(Model model) {
 
-        // create student object to hold student form data
+        // create course object to hold course form data
         Course course = new Course();
         model.addAttribute("course", course);
-        return "/courseFunctionality/create_course";
+        return "/courseFunctionality/createCourse";
 
     }
+    // save course in the database
+    @PostMapping("/courses")
+    public String saveCourse(@Validated @ModelAttribute("course") Course course, BindingResult bindingResult, Model model, HttpSession session) {
+        Course existingCourse = courseService.getByCourseCode(course.getCourseCode());
 
-    @PostMapping("/course")
-    public String saveCourse(@Validated @ModelAttribute("course") Course course,BindingResult bindingResult,Model model){
-        Course existingCourse = courseService.findCourseByCode(course.getCourseCode());
-
-        if (existingCourse != null) {
-            bindingResult.rejectValue("course", null,
-                    "The above course has already been added");
+        if(existingCourse != null && existingCourse.getCourseCode() != null && !existingCourse.getCourseCode().isEmpty()){
+            bindingResult.rejectValue("courseCode", null,
+                    "There is already an course with the code");
         }
-
-        if (bindingResult.hasErrors()) {
+        if(bindingResult.hasErrors()){
             model.addAttribute("course", course);
-            return "/courseFunctionality/course";
+            return "/courseFunctionality/createCourse";
         }
-
+//        // Check if the entered email contains "@mycput.ac.za" it one of cput rule to make sure that it is really a student
+//        if (!course.getEmail().toLowerCase().contains("@mycput.ac.za")) {
+//            bindingResult.rejectValue("email", "email.invalid", "Email must contain '@mycput.ac.za'");
+//            return "/departmentsFunctionality/createCourse";
+//        }
         courseService.saveCourse(course);
-        return "redirect:/course";
+        session.setAttribute("successMessage", "Course Successfully Added");
+        return "redirect:/courses/new?success";
+
     }
 
-    @GetMapping("/course/edit/{courseCode}")
-    public String editCourseForm(@PathVariable String courseCode, Model model) {
-        model.addAttribute("course", courseService.findCourseByCode(courseCode));
-        return "/courseFunctionality/edit_course";
+    // request to get the update page
+    @GetMapping("/courses/edit/{id}")
+    public String editCourseForm(@PathVariable Long id, Model model) {
+        model.addAttribute("course", courseService.getCourseById(id));
+        return "/courseFunctionality/editCourse";
     }
 
-    @PostMapping("/course/{courseCode}")
-    public String updateCourse(@PathVariable String courseCode,
-                                @ModelAttribute("course")  Course course,
-                                Model model) {
+    // update data with a specific ID
+    @PostMapping("/courses/{id}")
+    public String updateCourse(@PathVariable Long id, @ModelAttribute("course") Course course,
+                                Model model,HttpSession session) {
 
         // get course from database by id
-        Course existingCourse =  courseService.findCourseByCode(course.getCourseCode());
-        //existingCourse.setId(id);
+        Course existingCourse = courseService.getCourseById(id);
+        existingCourse.setId(id);
         existingCourse.setCourseCode(course.getCourseCode());
         existingCourse.setCourseDescription(course.getCourseDescription());
         existingCourse.setCourseName(course.getCourseName());
@@ -80,15 +99,23 @@ public class CourseController {
 
         // save updated course object
         courseService.updateCourse(existingCourse);
-        return "redirect:/course";
+        session.setAttribute("successMessage", "course has been Successfully Updated");
+        return "redirect:/courses";
     }
 
     // handler method to handle delete student request
 
-    @GetMapping("/course/{id}")
-    public String deleteCourse(@PathVariable Long id) {
-        courseService.deleteCourseById(id);
-        return "redirect:/course";
-    }
+    @GetMapping("/courses/{id}")
+    public String deleteCourse (@PathVariable Long id,HttpSession session) {
 
+        courseService.deleteCourseById(id);
+        session.setAttribute("successMessage", "Student Successfully Deleted");
+        return "redirect:/courses";
+    }
 }
+
+
+
+
+
+

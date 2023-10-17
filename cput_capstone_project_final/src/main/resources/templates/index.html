@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -232,12 +232,12 @@ small {
             </div>
         </div>
 
-        <div class="cover-container">
+        <div class="cover-container" sec:authorize="isAuthenticated()">
             <div class="inner cover">
                 <h1 class="cover-heading">School Attendance System</h1>
-                <p class="lead btn btn-lg btn-default"><a class="nav-link active" aria-current="page"
-                                                          th:href="@{/register}">ADMIN</a></p>
-                <p class="lead btn btn-lg btn-default"><a class="nav-link active" aria-current="page"
+                <p class="lead btn btn-lg btn-default" sec:authorize="hasRole('ADMIN')"><a class="nav-link active" aria-current="page"
+                                                          th:href="@{/registerAdmin}">ADMIN</a></p>
+                <p class="lead btn btn-lg btn-default" sec:authorize="hasRole('STUDENT')"><a class="nav-link active" aria-current="page"
                                                           th:href="@{/register}">USER</a></p>
             </div>
 

@@ -7,8 +7,9 @@ Handle request made by the client
 
 
 
-import ac.za.mycput.entity.Course;
+
 import ac.za.mycput.entity.Student;
+import ac.za.mycput.service.Interface.DepartmentService;
 import ac.za.mycput.service.Interface.StudentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
@@ -24,9 +25,11 @@ import java.util.List;
 
 
 @Controller
+@CrossOrigin(origins = "http://localhost:8080")
 public class StudentController {
 
     private StudentService studentService;
+    private DepartmentService departmentService;
 
     public StudentController(StudentService studentService) {
         super();
@@ -76,7 +79,6 @@ public class StudentController {
         studentService.saveStudent(student);
         session.setAttribute("successMessage", "Student Successfully Added");
         return "redirect:/students/new?success";
-        // Wait for 5 seconds (5000 milliseconds)
     }
 
     // request to get the update page
@@ -113,6 +115,13 @@ public class StudentController {
         studentService.deleteStudentById(id);
         session.setAttribute("successMessage", "Student Successfully Deleted");
         return "redirect:/students";
+    }
+
+    @GetMapping("/departmentSt")
+    public String listDepartment(Model model) {
+        model.addAttribute("department", departmentService.getAllDepartment());
+        return "/departmentsFunctionality/department"; // Return the name of the  Thymeleaf template
+        //return null;
     }
 }
 

@@ -1,5 +1,5 @@
 package ac.za.mycput.config;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,47 +16,41 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-public class SpringSecurity {
-
-
+public class SpringSecurityAdmin {
+    /*
     @Autowired
     private UserDetailsService userDetailsService;
-
     @Bean
-    public static PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoderAdmin(){
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/register/**","/registerAdmin/**").permitAll()
-                                .requestMatchers("/index").permitAll()
-                                .requestMatchers("/users").hasRole("STUDENT")
+    public SecurityFilterChain filterChainAdmin(HttpSecurity http) throws Exception {
+        http
+                .cors(withDefaults())
+                .csrf(withDefaults())
+                .authorizeHttpRequests(authorize ->
+                        authorize
+                                .requestMatchers(
+                                        "/registerAdmin/**", // Allow admin registration
+                                        "/index").permitAll()
                                 .requestMatchers("/admins").hasRole("ADMIN")
-                                .requestMatchers("/students","/students/new","/students/edit/{id}","/students/{id}","/students/{id}").permitAll()
-                                .requestMatchers("/course","/course/new","/course/edit/{courseCode}","/course/{courseCode}","/course/{id}").permitAll()
-                                .requestMatchers("/department","/department/new").permitAll()
-
-
-
-                )
-                .formLogin(
-                        form -> form
-                                .loginPage("/login")
-                                .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users") // after login user can create student
+                                .requestMatchers(
+                                        "/students", "/students/new", "/students/edit/{id}", "/students/{id}",
+                                        "/courses", "/courses/new", "/course/edit/{id}", "/course/{id}",
+                                        "/department", "/department/new", "/department/edit/{id}", "/department/{id}")
                                 .permitAll()
                 )
-//                .formLogin(formAdmin ->
-//                        formAdmin
-//                                .loginPage("/loginAdmin") // Admin login form
-//                                .loginProcessingUrl("/loginAdmin")
-//                                .defaultSuccessUrl("/admins") // After login, admin can create students
-//                                .permitAll()
-//                )
+
+
+                .formLogin(formAdmin ->
+                        formAdmin
+                                .loginPage("/loginAdmin") // Admin login form
+                                .loginProcessingUrl("/loginAdmin")
+                                .defaultSuccessUrl("/admins") // After login, admin can create students
+                                .permitAll()
+                )
                 .logout(logout ->
                         logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -66,16 +60,16 @@ public class SpringSecurity {
         return http.build();
     }
 
-
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
+                .passwordEncoder(passwordEncoderAdmin());
     }
+
+
 
 }
 
-
+     */
 

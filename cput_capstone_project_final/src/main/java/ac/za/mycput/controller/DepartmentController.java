@@ -26,7 +26,7 @@ public class DepartmentController {
     @GetMapping("/department")
     public String listDepartment(Model model) {
         model.addAttribute("department", departmentService.getAllDepartment());
-        return "/departmentsFunctionality/department"; // Return the name of the department.html Thymeleaf template
+        return "/departmentsFunctionality/department"; // Return the name of the  Thymeleaf template
     }
 
 
@@ -44,7 +44,7 @@ public class DepartmentController {
     public String saveDepartment(@Validated @ModelAttribute("department") Department department,
                               BindingResult bindingResult,
                               Model model) {
-        Department existingDepartment = departmentService.getDepartmentId(department.getDepartmentId());
+        Department existingDepartment = departmentService.getByDepartmentId(department.getDepartmentId());
 
 
         if (existingDepartment != null && existingDepartment.getDepartmentId() != null && !existingDepartment.getDepartmentId().isEmpty()) {
@@ -62,20 +62,20 @@ public class DepartmentController {
         return "redirect:/department/new?success";
 
     }
-    @GetMapping("/department/edit/{departmentId}")
-    public String editDepartmentForm(@PathVariable String departmentId, Model model) {
-        model.addAttribute("department", departmentService.getDepartmentId(departmentId));
+    @GetMapping("/department/edit/{id}")
+    public String editDepartmentForm(@PathVariable Long id, Model model) {
+        model.addAttribute("department", departmentService.getById(id));
         return "/departmentsFunctionality/editDepartment";
     }
 
-    @PostMapping("/department/{departmentId}")
-    public String updateDepartment(@PathVariable String departmentId,
+    @PostMapping("/department/{id}")
+    public String updateDepartment(@PathVariable Long id,
                                 @ModelAttribute("department") Department department,
                                 Model model) {
 
-        // get department from database by departmentId
-        Department existingDepartment = departmentService.getDepartmentId(departmentId);
-        existingDepartment.setId(department.getId());
+        // get department from database by getId
+        Department existingDepartment = departmentService.getById(id);
+        existingDepartment.setId(id);
         existingDepartment.setDepartmentId(department.getDepartmentId());
         existingDepartment.setAdminName(department.getAdminName());
         existingDepartment.setDepartmentName(department.getDepartmentName());
@@ -87,9 +87,9 @@ public class DepartmentController {
     }
 
     // handler method to handle delete department request
-    @GetMapping("/department/{departmentId}")
-    public String deleteDepartmentId(@PathVariable String departmentId) {
-        departmentService.deleteDepartmentId(departmentId);
+    @GetMapping("/department/{id}")
+    public String deleteId(@PathVariable Long id) {
+        departmentService.deleteById(id);
         return "redirect:/department";
     }
 

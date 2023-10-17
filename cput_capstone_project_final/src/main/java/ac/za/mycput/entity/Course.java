@@ -1,6 +1,5 @@
 package ac.za.mycput.entity;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -17,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor // no argument contructor
 @AllArgsConstructor
 @Entity
-@Table(name="Course")
+@Table(name="course")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,6 +65,6 @@ public class Course {
     private List<Educator> educators= new ArrayList<>();
 
 
-    public Course(int i, String adp3, String allAboutCoding, Date startDate, Date endDate, String technology, String s) {
-    }
 }
+
+

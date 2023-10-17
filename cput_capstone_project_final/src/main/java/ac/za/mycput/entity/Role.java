@@ -16,6 +16,7 @@ import java.util.List;
 @Table(name="roles")
 public class Role
 {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,4 +26,7 @@ public class Role
 
     @ManyToMany(mappedBy="roles")
     private List<User> users;
+
+    @ManyToMany(mappedBy = "roles")
+    private List<Administrator> administrators;
 }

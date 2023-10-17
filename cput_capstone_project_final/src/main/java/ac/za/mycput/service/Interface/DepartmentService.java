@@ -9,12 +9,15 @@ public interface DepartmentService {
     Department saveDepartment(Department department);
     List<Department>getAllDepartment();
 
-    Department getDepartmentId(String departmentId);
+    Department getByDepartmentId(String departmentId);
 
     Department updateDepartment(Department department);
 
-    void deleteDepartmentId(String departmentId);
+    void deleteById(Long id);
+
+    Department getById(Long id);
 
 
+    //void deleteByDepartmentId(String departmentId);
 }
 

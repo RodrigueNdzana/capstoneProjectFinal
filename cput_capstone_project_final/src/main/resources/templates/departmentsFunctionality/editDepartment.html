@@ -66,7 +66,7 @@ border: 3px solid #0d6efd;
                 </div>
             </div>
             <div class = "card-body">
-                <form th:action="@{/department/{departmentId} (id=${department.id})}" th:object = "${department}" method="POST">
+                <form th:action="@{/department/{id} (id=${department.id})}" th:object = "${department}" method="POST">
                     <div class ="form-group">
                         <label> DepartmentId</label>
                         <input type = "text" name = "departmentId" th:field = "*{departmentId}" class = "form-control"/>
@@ -75,7 +75,7 @@ border: 3px solid #0d6efd;
                     </div>
                     <div class ="form-group">
                         <label> Admin Name </label>
-                        <textarea type = "text" name = "adminName" th:field = "*{adminName}" class = "form-control" />
+                        <input type = "text" name = "adminName" th:field = "*{adminName}" class = "form-control" />
                         <p th:errors = "*{adminName}" class="text-danger"
                            th:if="${#fields.hasErrors('adminName')}"></p>
                     </div>
@@ -86,12 +86,12 @@ border: 3px solid #0d6efd;
                            th:if="${#fields.hasErrors('departmentName')}"></p>
                     </div>
 
-                    <div class ="form-group">
-                        <label> Department Description</label>
-                        <input type = "text" name = "date" th:field = "*{departmentDescription}" class = "form-control"/>
-                    </div>
+                    <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Department Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field = "*{departmentDescription}" placeholder="Enter department description..."></textarea>
                     <p th:errors = "*{departmentDescription}" class="text-danger"
                        th:if="${#fields.hasErrors('departmentDescription')}"></p>
+                </div>
                     <div class = "box-footer">
                         <button type="submit" class = "btn btn-primary">
                             Update Department Record
