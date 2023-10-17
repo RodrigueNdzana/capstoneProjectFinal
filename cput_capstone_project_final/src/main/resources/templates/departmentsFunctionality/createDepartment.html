@@ -3,39 +3,20 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Student Management System</title>
-    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
     <style>
-    .card{
-    osition: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #3b4148;
-    background-clip: border-box;
-    border: 4px solid yellow;
-    border-radius: 13px;
-    color: yellow;
-    }
-    .text-center{
-        color: #0d6efd;
-    }
-    .btn-primary {
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    width: 44%;
-}
-.text-danger {
-    color: red!important;
-}
-.form-control{
-border: 3px solid #0d6efd;
-}
-</style>
+		.bg-dark{
+		background-color:none;
+		}
+	</style>
 </head>
-<body>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<body style="background-image: url('https://us.123rf.com/450wm/xetra/xetra1410/xetra141000038/32614081-nice-vector-laser-light-in-blue-color-and-dark-background.jpg'); background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;padding-top:10px">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="background-color:none">
     <!-- Brand -->
     <a class="navbar-brand" href="#">Student Attendance System</a>
 
@@ -48,55 +29,63 @@ border: 3px solid #0d6efd;
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/index}">Student Attendance System</a>
+                <a class="nav-link" th:href="@{/students}">View Students</a>
             </li>
         </ul>
     </div>
 </nav>
 <br>
 <br>
+
 <div class = "container">
     <div class = "row">
-        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <h1 class = "text-center"> Create New department </h1>
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="
+    background: transparent;
+    color: white">
+            <h1 class = "text-center"> Create New Student </h1>
             <div th:if="${param.success}">
                 <div class="alert alert-info">
                     The department Were created successfully !
+                    <a style="color:red"href=" /department">click here to view the created student</a>
                 </div>
             </div>
             <div class = "card-body">
                 <form th:action="@{/department}" th:object = "${department}" method="POST">
                     <div class ="form-group">
-                        <label> Department ID</label>
-                        <input type = "text" name = "departmentId" th:field = "*{departmentId}" class = "form-control" placeholder="Enter department Id"/>
+                        <label> Department Id </label>
+                        <input type = "text" name = "departmentId" th:field = "*{departmentId}" class = "form-control" placeholder="Enter department ID..."/>
                         <p th:errors = "*{departmentId}" class="text-danger"
                            th:if="${#fields.hasErrors('departmentId')}"></p>
                     </div>
+
                     <div class ="form-group">
                         <label> Admin name </label>
-                        <input type = "text" name = "adminName" th:field = "*{adminName}" class = "form-control" placeholder="admin name"/>
+                        <input type = "text" name = "adminName" th:field = "*{adminName}" class = "form-control" placeholder="Enter your Name..."
+                        />
                         <p th:errors = "*{adminName}" class="text-danger"
                            th:if="${#fields.hasErrors('adminName')}"></p>
                     </div>
-                    <div class ="form-group">
-                        <label> Department Name </label>
-                        <input type = "text" name = "departmentName" th:field = "*{departmentName}" class = "form-control" placeholder="what is the department name"/>
-                        <p th:errors = "*{departmentName}" class="text-danger"
-                           th:if="${#fields.hasErrors('departmentName')}"></p>
-                    </div>
 
                     <div class ="form-group">
-                        <label> Department Description </label>
-                        <input type = "text" name = "date" th:field = "*{departmentDescription}" class = "form-control" placeholder="what is it all about?"/>
-                        <p th:errors = "*{departmentDescription}" class="text-danger"
-                           th:if="${#fields.hasErrors('departmentDescription')}"></p>
+                        <div class ="form-group">
+                            <label> Department Name</label>
+                            <input type = "text" name = "departmentName" th:field = "*{departmentName}" class = "form-control" placeholder="Enter department name..."/>
+                            <p th:errors = "*{departmentName}" class="text-danger"
+                               th:if="${#fields.hasErrors('departmentName')}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Example textarea</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field = "*{departmentDescription}" placeholder="Enter department description..."></textarea>
+                            <p th:errors = "*{departmentDescription}" class="text-danger"
+                               th:if="${#fields.hasErrors('departmentDescription')}"></p>
+                        </div>
+
+                        <div class = "box-footer">
+                            <button type="submit" class = "btn btn-primary">
+                                Create Department
+                            </button>
+                        </div>
                     </div>
-                    </br>
-                    </br>
-                    </br>
-                    <button type="submit" class = "btn btn-primary">
-                        Create Department
-                    </button>
                 </form>
 
             </div>

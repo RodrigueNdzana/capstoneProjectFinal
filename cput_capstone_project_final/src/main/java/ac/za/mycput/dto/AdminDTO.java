@@ -1,6 +1,5 @@
 package ac.za.mycput.dto;
 
-import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -12,9 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class UserDto
-{
+public class AdminDTO {
     private Long id;
     @NotEmpty
     private String firstName;
@@ -26,5 +23,6 @@ public class UserDto
     @NotEmpty(message = "Password should not be empty")
     private String password;
 }
+
 
  */

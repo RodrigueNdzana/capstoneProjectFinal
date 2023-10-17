@@ -1,7 +1,9 @@
 package ac.za.mycput.entity;
 
 
+/*
 
+ */
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
@@ -33,7 +35,8 @@ public class Educator {
     @Column(nullable = false)
     private String educatorGender;
 
-    @ManyToMany(mappedBy="educators")
-    private List<Course> courses;
+
+
 
 }
+

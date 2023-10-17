@@ -3,41 +3,23 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Student Management System</title>
-    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
     <style>
-    .card{
-    osition: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #3b4148;
-    background-clip: border-box;
-    border: 4px solid yellow;
-    border-radius: 13px;
-    color: yellow;
-    }
-    .text-center{
-        color: #0d6efd;
-    }
-    .btn-primary {
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    width: 44%;
-}
-.text-danger {
-    color: red!important;
-}
-.form-control{
-border: 3px solid #0d6efd;
-}
-</style>
+		.bg-dark{
+		background-color:none;
+		}
+
+    </style>
 </head>
-<body>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<body style="background-image: url('https://us.123rf.com/450wm/xetra/xetra1410/xetra141000038/32614081-nice-vector-laser-light-in-blue-color-and-dark-background.jpg'); background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;padding-top:10px">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="background-color:none">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">Student Management System</a>
+    <a class="navbar-brand" href="#">Student Attendance System</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -48,24 +30,28 @@ border: 3px solid #0d6efd;
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/students}">Student Management</a>
+                <a class="nav-link" th:href="@{/courses}">View courses</a>
             </li>
         </ul>
     </div>
 </nav>
 <br>
 <br>
-<div class = "container">
-    <div class = "row">
-        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <h1 class = "text-center"> Create New Course </h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="
+    background: transparent;
+    color: white">
+            <h1 class="text-center"> Create New courses </h1>
             <div th:if="${param.success}">
                 <div class="alert alert-info">
-                    The Course Were created successfully !
+                    The course Were created successfully !
+                    <a style="color:red" href="/courses">click here to view the created courses</a>
                 </div>
             </div>
-            <div class = "card-body">
-                <form th:action="@{/course}" th:object = "${course}" method="POST">
+            <div class="card-body">
+                <form th:action="@{/courses}" th:object = "${course}" method="POST">
                     <div class ="form-group">
                         <label> Course Code </label>
                         <input type = "text" name = "courseCode" th:field = "*{courseCode}" class = "form-control" placeholder="Enter course code"/>
@@ -88,9 +74,9 @@ border: 3px solid #0d6efd;
                     <div class ="form-group">
                         <label> Start Date </label>
                         <input type = "date" name = "date" th:field = "*{startDate}" class = "form-control" placeholder="Start date"/>
+                        <p th:errors = "*{startDate}" class="text-danger"
+                           th:if="${#fields.hasErrors('startDate')}"></p>
                     </div>
-                    <p th:errors = "*{startDate}" class="text-danger"
-                       th:if="${#fields.hasErrors('startDate')}"></p>
                     <div class ="form-group">
                         <label> End Date </label>
                         <input type = "date" name = "date" th:field = "*{endDate}" class = "form-control" placeholder="End date"/>
@@ -106,19 +92,20 @@ border: 3px solid #0d6efd;
                     <div class ="form-group">
                         <label> ClassName </label>
                         <input type = "text" name = "date" th:field = "*{ClassName}" class = "form-control" placeholder="what is the class Name"/>
+                        <p th:errors = "*{ClassName}" class="text-danger"
+                           th:if="${#fields.hasErrors('ClassName')}"></p>
                     </div>
-                    <p th:errors = "*{ClassName}" class="text-danger"
-                       th:if="${#fields.hasErrors('ClassName')}"></p>
-                    <div class = "box-footer">
-                        <button type="submit" class = "btn btn-primary">
-                            Create Course
-                        </button>
-                    </div>
-                </form>
 
+                    <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">
+                                create course
+                            </button>
+                        </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>

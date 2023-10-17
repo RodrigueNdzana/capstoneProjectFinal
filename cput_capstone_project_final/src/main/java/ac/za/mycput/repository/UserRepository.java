@@ -1,8 +1,13 @@
 package ac.za.mycput.repository;
 
+
 import ac.za.mycput.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /* AUTHOR NAME Rodrigue Ndzana
 This method uses Spring Data JPA's method name query creation feature to generate a query that finds a user by their email address.
@@ -12,6 +17,10 @@ null otherwise.
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
+
     User findByEmail(String email);
+    //Custom query for search user
+    @Query(value = "select * from users u where u.first_name like %:keyword% or u.email like %:keyword%", nativeQuery = true)
+    List<User> findByKeyword(@Param("keyword") String keyword);
 
 }

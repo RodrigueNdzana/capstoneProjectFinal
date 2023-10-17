@@ -22,6 +22,11 @@
                 </li>
             </ul>
         </div>
+        <form th:action="@{/users}" method="get">
+            <input type="text" name="keyword" th:value="${keyword}"  placeholder="SEARCH STUDENT BY EMAIL OR NAME" size="50" >
+            <button type="submit" class="btn btn-info" >Search</button>
+            <button type="submit" class="btn btn-info" >Reset</button>
+        </form>
     </div>
 </nav>
 <div class="container">
@@ -29,15 +34,14 @@
         <h2>List of Registered Users</h2>
     </div>
     <div class = "row">
-        <div class = "col-lg-3">
+        <div class = "col-lg-6">
             <a th:href = "@{/students/new}" class = "btn btn-primary btn-sm mb-3"> Add Student</a>
+            <a th:href = "@{/course/new}" class = "btn btn-primary btn-sm mb-3"> Add Course</a>
+            <a th:href = "@{/department/new}" class = "btn btn-primary btn-sm mb-3"> Add Department</a>
+            <a th:href = "@{/createCourse}" class = "btn btn-primary btn-sm mb-3"> View Attendance</a>
         </div>
     </div>
-    <div class = "row">
-        <div class = "col-lg-3">
-            <a th:href = "@{/createCourse}" class = "btn btn-primary btn-sm mb-3"> Add Course</a>
-        </div>
-    </div>
+
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
         <tr>

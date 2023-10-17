@@ -32,14 +32,10 @@ public class Student {
     private String lastname;
 
     @Column(nullable = false, unique = true)
-    @NotEmpty(message = "email should not be empty make sure it contains @mycput.ac.za")
-    @Email(message = "Please enter a valid email address")
+    @NotEmpty(message = "email should not be empty")
     private String email;
-}
 
-//    @Column(nullable = true)
-//    @NotEmpty(message = "please select your department")
-//    private String department;
-//
-//    @ManyToMany(mappedBy="students")
-//    private List<Course> courses;}
+//    @ManyToOne
+//    @JoinColumn(name = "id") // Use @JoinColumn to specify the foreign key column
+//    private Student student;
+}
