@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Student Management System</title>
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}">
+    <style>
+    .card{
+    osition: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #3b4148;
+    background-clip: border-box;
+    border: 4px solid yellow;
+    border-radius: 13px;
+    color: yellow;
+    }
+    .text-center{
+        color: #0d6efd;
+    }
+    .btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    width: 44%;
+}
+.text-danger {
+    color: red!important;
+}
+.form-control{
+border: 3px solid #0d6efd;
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students}">Student Attendance System</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class = "text-center"> Update Course Details </h1>
+            <div th:if="${param.success}">
+                <div class="alert alert-info">
+                    Department Were updated successfully !
+                    <a style="color:red" href="/department">click here to view the updated department</a>
+                </div>
+            </div>
+            <div class = "card-body">
+                <form th:action="@{/department/{id} (id=${department.id})}" th:object = "${department}" method="POST">
+                    <div class ="form-group">
+                        <label> DepartmentId</label>
+                        <input type = "text" name = "departmentId" th:field = "*{departmentId}" class = "form-control"/>
+                        <p th:errors = "*{departmentId}" class="text-danger"
+                           th:if="${#fields.hasErrors('departmentId')}"></p>
+                    </div>
+                    <div class ="form-group">
+                        <label> Admin Name </label>
+                        <input type = "text" name = "adminName" th:field = "*{adminName}" class = "form-control" />
+                        <p th:errors = "*{adminName}" class="text-danger"
+                           th:if="${#fields.hasErrors('adminName')}"></p>
+                    </div>
+                    <div class ="form-group">
+                        <label> Department Name </label>
+                        <input type = "text" name = "departmentName" th:field = "*{departmentName}" class = "form-control"/>
+                        <p th:errors = "*{departmentName}" class="text-danger"
+                           th:if="${#fields.hasErrors('departmentName')}"></p>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Department Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field = "*{departmentDescription}" placeholder="Enter department description..."></textarea>
+                    <p th:errors = "*{departmentDescription}" class="text-danger"
+                       th:if="${#fields.hasErrors('departmentDescription')}"></p>
+                </div>
+                    <div class = "box-footer">
+                        <button type="submit" class = "btn btn-primary">
+                            Update Department Record
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
