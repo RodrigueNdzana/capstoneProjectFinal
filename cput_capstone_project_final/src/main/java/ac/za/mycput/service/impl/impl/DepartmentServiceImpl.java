@@ -1,4 +1,4 @@
-package ac.za.mycput.service.impl;
+package ac.za.mycput.service.impl.impl;
 /*
 
  */
@@ -6,7 +6,8 @@ package ac.za.mycput.service.impl;
 
 import ac.za.mycput.entity.Department;
 import ac.za.mycput.repository.DepartmentRepository;
-import ac.za.mycput.service.Interface.DepartmentService;
+
+import ac.za.mycput.service.impl.Interface.DepartmentService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

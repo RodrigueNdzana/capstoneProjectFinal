@@ -1,11 +1,11 @@
-package ac.za.mycput.service.Interface;
+package ac.za.mycput.service.impl.Interface;
 
 
 
 import ac.za.mycput.entity.Subject;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface SubjectService {
     List<Subject> getAllSubject();
@@ -19,4 +19,11 @@ public interface SubjectService {
     void deleteSubjectById(Long id);
 
     Subject getSubjectByiD(Long id);
+
+
+
+    Subject getSubjectName(String subjectName);
+
+    @Query(value = "select * from subjects s where s.subjectName like %:keyword%", nativeQuery = true)
+    List<Subject> findByKeywordSubject(String keyword);
 }

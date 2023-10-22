@@ -1,13 +1,16 @@
-package ac.za.mycput.service.impl;
+package ac.za.mycput.service.impl.impl;
 
 
 import ac.za.mycput.entity.Subject;
 import ac.za.mycput.repository.SubjectRepository;
-import ac.za.mycput.service.Interface.SubjectService;
+
+import ac.za.mycput.service.impl.Interface.SubjectService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
+@Service("SubjectServiceImpl")
 public class SubjectServiceImpl implements SubjectService {
     private SubjectRepository subjectRepository;
 
@@ -17,7 +20,7 @@ public class SubjectServiceImpl implements SubjectService {
     }
     @Override
     public List<Subject> getAllSubject() {
-        return null;
+        return subjectRepository.findAll();
     }
 
     @Override
@@ -44,6 +47,16 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Subject getSubjectByiD(Long id) {
+        return subjectRepository.findById(id).get();
+    }
+
+    @Override
+    public Subject getSubjectName(String subjectName) {
         return null;
+    }
+
+    @Override
+    public List<Subject> findByKeywordSubject(String keyword) {
+        return subjectRepository.findByKeywordSubject(keyword);
     }
 }

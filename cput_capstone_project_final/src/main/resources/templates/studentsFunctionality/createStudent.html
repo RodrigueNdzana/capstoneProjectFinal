@@ -8,15 +8,22 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
   <style>
-		.bg-dark{
-		background-color:none;
+
+		.form-control{
+    bottom-top: none;
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: white;
+
 		}
 	</style>
 </head>
-<body style="background-image: url('https://us.123rf.com/450wm/xetra/xetra1410/xetra141000038/32614081-nice-vector-laser-light-in-blue-color-and-dark-background.jpg'); background-repeat: no-repeat;
+<body style="background-image: url('https://media.istockphoto.com/id/1332097112/photo/the-black-and-silver-are-light-gray-with-white-the-gradient-is-the-surface-with-templates.webp?b=1&s=170667a&w=0&k=20&c=uzejUTDUlhurH8GcYgKElOMBFkK84FEp9BIzzmncGWo='); background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;padding-top:10px">
-<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="background-color:none">
+<nav class="navbar navbar-expand-md bg-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="#">Student Attendance System</a>
 
@@ -91,12 +98,18 @@
                th:if="${#fields.hasErrors('email')}"></p>
           </div>
 
-
-
+            <label for="department">Department:</label>
+            <select class="form-control" id="department" name="department.id" th:field="*{department}">
+              <option value="" disabled selected>Select a Department</option>
+              <option th:each="dept : ${departments}" th:value="${dept.id}" th:text="${dept.departmentName}"></option>
+            </select>
+          </br>
+            </br>
             <div class = "box-footer">
             <button type="submit" class = "btn btn-primary">
-              Submit
+              Create Student
             </button>
+          </div>
           </div>
         </form>
 

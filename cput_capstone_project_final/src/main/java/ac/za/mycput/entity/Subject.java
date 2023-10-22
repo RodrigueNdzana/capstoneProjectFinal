@@ -2,6 +2,7 @@ package ac.za.mycput.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +25,12 @@ public class Subject {
     private String subjectName;
 
     @Column(nullable=false)
+    @Size(min = 50, message = "Text must be at least 50 characters long")
     @NotEmpty(message = "select description can not be empty")
     private String subjectDescription;
 
+    @ManyToOne
+    @JoinColumn(name = "courseName")
+    private Course courseName;
 
 }

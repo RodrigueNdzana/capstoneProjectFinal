@@ -1,11 +1,12 @@
-package ac.za.mycput.service.impl;
+package ac.za.mycput.service.impl.impl;
 /*
 
  */
 
 import ac.za.mycput.entity.Course;
 import ac.za.mycput.repository.CourseRepository;
-import ac.za.mycput.service.Interface.CourseService;
+
+import ac.za.mycput.service.impl.Interface.CourseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,14 +40,19 @@ public class CourseServiceImpl implements CourseService {
         return courseRepository.save(course);
     }
 
+
     @Override
-    public void deleteCourseById(Long id) {
-        courseRepository.deleteCourseById(id);
+    public void deleteByCourseName(String courseName) {
+        courseRepository.deleteByCourseName(courseName);
     }
 
     @Override
     public Course getCourseById(Long id) {
         return courseRepository.findCourseById(id);
+    }
+    @Override
+    public Course getCourseName(String courseName) {
+        return courseRepository.findByCourseName(courseName);
     }
 
     @Override

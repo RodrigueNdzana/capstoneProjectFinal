@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.security.auth.Subject;
 import java.time.LocalDate;
 
 @Getter
@@ -25,17 +24,22 @@ public class Attendance {
     @NotEmpty(message = "select date")
     private LocalDate date;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id") // Specify a unique column name for the Student association
-    private Student student;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "firstname") // Specify a unique column name for the Student association
+    private Student studentName;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id") // Specify a unique column name for the Course association
-    private Course course;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseName") // Specify a unique column name for the Course association
+    private Course courseName;
 
-    @ManyToOne
-    @JoinColumn(name = "educator_id") // Specify a unique column name for the Educator association
-    private Educator educator;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "educatorName") // Specify a unique column name for the Educator association
+    private Educator educatorName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subjectName") // Specify a unique column name for the subject association
+    private Subject subjectName;
+
 
     private boolean present;
 
