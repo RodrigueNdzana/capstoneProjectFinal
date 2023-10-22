@@ -7,10 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor // no argument contructor
@@ -22,48 +18,30 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable=false,unique = true)
+    @Column(name="courseCode", nullable=false,unique = true)
     @NotEmpty(message = "course code can not be empty")
     private String courseCode;
 
-    @Column(nullable=false,unique = true)
+    @Column(name="courseDescription",nullable=false)
     @NotEmpty(message = "course description can not be empty")
     private String courseDescription;
 
-    @Column(nullable = false)
+    @Column(name="courseName",nullable = false)
     @NotEmpty(message = "course name can not be empty")
     private String courseName;
 
-    @Column(nullable = false)
-    private Date startDate;
+    @Column(name="startDate",nullable = false)
+    private String startDate;
 
-    @Column(nullable = false)
-    private Date endDate;
+    @Column(name="endDate",nullable = false)
+    private String endDate;
 
-    @Column(nullable=false,unique = true)
+    @Column(name="department",nullable=false,unique = true)
     @NotEmpty(message = "department name can not be empty")
     private String department;
 
-    @Column(nullable = false)
+    @Column(name="className",nullable = false)
     private String className;
-
-   
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "enrolled_Student",
-            joinColumns = {@JoinColumn(name = "Course_Id",referencedColumnName = "id")},
-            inverseJoinColumns= {@JoinColumn(name = "Student_Name", referencedColumnName = "firstname")}
-    )
-    private List<Student> students= new ArrayList<>();
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "enrolled_Student",
-            joinColumns = {@JoinColumn(name = "Course_Id",referencedColumnName = "id")},
-            inverseJoinColumns= {@JoinColumn(name = "Educator_Name", referencedColumnName = "educatorName")}
-    )
-    private List<Educator> educators= new ArrayList<>();
-
 
 }
 

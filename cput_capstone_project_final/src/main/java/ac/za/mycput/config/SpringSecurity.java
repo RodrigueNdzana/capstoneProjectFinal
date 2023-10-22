@@ -32,31 +32,36 @@ public class SpringSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/register/**","/registerAdmin/**").permitAll()
+                        authorize
+                                .requestMatchers("/register/**", "/registerAdmin/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/users").hasRole("STUDENT")
+                                .requestMatchers("/users/edit/{id}", "/users/{id}").permitAll()
                                 .requestMatchers("/admins").hasRole("ADMIN")
-                                .requestMatchers("/students","/students/new","/students/edit/{id}","/students/{id}","/students/{id}").permitAll()
-                                .requestMatchers("/course","/course/new","/course/edit/{courseCode}","/course/{courseCode}","/course/{id}").permitAll()
-                                .requestMatchers("/department","/department/new").permitAll()
-
-
-
+                                .requestMatchers("/students", "/searchStudent", "/searchStudentAdmin", "/students/new",
+                                        "/students/edit/{id}", "/students/{id}").permitAll()
+                                .requestMatchers("/courses", "/courses/new", "/courses/edit/{id}").permitAll()
+                                .requestMatchers("/department", "/department/new", "/department/edit/{id}", "/department/{id}").permitAll()
+                                .requestMatchers("/markAttendanceForm", "/attendanceReport").permitAll()
+                                .requestMatchers("/educators", "/educators/new", "/educators/edit/{id}",
+                                        "/searchEducatorAdmin", "/searchEducatorUser").permitAll()
+                                .requestMatchers("/subjects", "/subjects/new", "/subjects/edit/{id}", "/subjects/{id}",
+                                        "/searchSubject", "/searchSubjectAdmin").permitAll()
                 )
-                .formLogin(
-                        form -> form
-                                .loginPage("/login")
-                                .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users") // after login user can create student
-                                .permitAll()
-                )
-//                .formLogin(formAdmin ->
-//                        formAdmin
-//                                .loginPage("/loginAdmin") // Admin login form
-//                                .loginProcessingUrl("/loginAdmin")
-//                                .defaultSuccessUrl("/admins") // After login, admin can create students
+//                .formLogin(
+//                        form -> form
+//                                .loginPage("/login")
+//                                .loginProcessingUrl("/login")
+//                                .defaultSuccessUrl("/users") // after login user can create student
 //                                .permitAll()
 //                )
+                .formLogin(formAdmin ->
+                        formAdmin
+                                .loginPage("/loginAdmin") // Admin login form
+                                .loginProcessingUrl("/loginAdmin")
+                                .defaultSuccessUrl("/admins") // After login, admin can create students
+                                .permitAll()
+                )
                 .logout(logout ->
                         logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

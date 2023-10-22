@@ -1,10 +1,11 @@
-package ac.za.mycput.service.impl;
+package ac.za.mycput.service.impl.impl;
 /*Author: Rodrigue Ndzaana
 
  */
 import ac.za.mycput.entity.Student;
 import ac.za.mycput.repository.StudentRepository;
-import ac.za.mycput.service.Interface.StudentService;
+
+import ac.za.mycput.service.impl.Interface.StudentService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,5 +47,21 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student getStudentByEmail(String email) {
         return studentRepository.findByEmail(email);
+    }
+
+    @Override
+    public Student findByFirstname(String firstName) {
+        return studentRepository.findByFirstname(firstName);
+    }
+
+
+//    @Override
+//    public Student findByFirstname(String firstName) {
+//        return studentRepository.findByFirstname(firstName);
+//    }
+
+    @Override
+    public List<Student> findByKeyword(String keyword) {
+        return studentRepository.findByKeyword(keyword);
     }
 }

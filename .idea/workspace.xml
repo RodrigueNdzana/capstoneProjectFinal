@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="37d41ef7-3e4c-4d8b-acff-1339dfa55a66" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/EducatorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/dto/AttendanceDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/repository/EducatorRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/Interface/EducatorService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/Interface/SubjectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/impl/EducatorServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/studentsFunctionality/searchStudent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/subjectsFunctionality/createSubject.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/subjectsFunctionality/editSubject.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/subjectsFunctionality/searchSubject.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/subjectsFunctionality/subjects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/config/SpringSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/AttendanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/AttendanceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/DepartmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/dto/AdminDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/dto/AdminDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Administrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Attendance.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Attendance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Educator.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Educator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/Subject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/repository/CourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/repository/CourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/repository/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/repository/StudentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/repository/SubjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/repository/SubjectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/Interface/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/Interface/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/Interface/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/Interface/DepartmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/Interface/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/Interface/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/Interface/SubjectService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/Interface/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/Interface/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/impl/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/DepartmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/impl/DepartmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/impl/StudentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/SubjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/impl/SubjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/AttendanceFunctionality/attendanceForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/AttendanceFunctionality/attendanceForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/AttendanceFunctionality/attendanceReport.html" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/AttendanceFunctionality/attendanceReport.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/SubjectFunctionality/createSubject.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/studentsFunctionality/createStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/studentsFunctionality/createStudent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/studentsFunctionality/editStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/studentsFunctionality/editStudent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/studentsFunctionality/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates/studentsFunctionality/students.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2X7ENZQNIgVSY1cmnx2vnEsSn9z" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mac/Desktop/capstoneProjectFinal/cput_capstone_project_final/src/main/java/ac/za/mycput&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput" />
+      <recent name="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/impl" />
+      <recent name="$PROJECT_DIR$/cput_capstone_project_final/src/main/java/ac/za/mycput/service/Interface" />
+      <recent name="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cput_capstone_project_final/src/main/resources/templates" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ac.za.mycput.controller" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="37d41ef7-3e4c-4d8b-acff-1339dfa55a66" name="Changes" comment="" />
+      <created>1697971686730</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697971686730</updated>
+    </task>
+    <servers />
+  </component>
+</project>

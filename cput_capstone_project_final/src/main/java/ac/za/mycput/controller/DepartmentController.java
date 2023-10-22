@@ -5,7 +5,8 @@ package ac.za.mycput.controller;
 
 
 import ac.za.mycput.entity.Department;
-import ac.za.mycput.service.Interface.DepartmentService;
+
+import ac.za.mycput.service.impl.Interface.DepartmentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,8 +43,8 @@ public class DepartmentController {
     // handler method to handle department to save data
     @PostMapping("/department")
     public String saveDepartment(@Validated @ModelAttribute("department") Department department,
-                              BindingResult bindingResult,
-                              Model model) {
+                                 BindingResult bindingResult,
+                                 Model model) {
         Department existingDepartment = departmentService.getByDepartmentId(department.getDepartmentId());
 
 
@@ -70,8 +71,8 @@ public class DepartmentController {
 
     @PostMapping("/department/{id}")
     public String updateDepartment(@PathVariable Long id,
-                                @ModelAttribute("department") Department department,
-                                Model model) {
+                                   @ModelAttribute("department") Department department,
+                                   Model model) {
 
         // get department from database by getId
         Department existingDepartment = departmentService.getById(id);
