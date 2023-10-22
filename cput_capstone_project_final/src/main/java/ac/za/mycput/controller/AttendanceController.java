@@ -2,10 +2,8 @@ package ac.za.mycput.controller;
 
 
 
-import ac.za.mycput.entity.Attendance;
-import ac.za.mycput.entity.Course;
-import ac.za.mycput.entity.Student;
-import ac.za.mycput.entity.Subject;
+import ac.za.mycput.database.AttendanceDatabase;
+import ac.za.mycput.entity.*;
 import ac.za.mycput.repository.AttendanceRepository;
 import ac.za.mycput.repository.CourseRepository;
 import ac.za.mycput.repository.StudentRepository;
@@ -13,13 +11,11 @@ import ac.za.mycput.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:8080")
@@ -80,6 +76,25 @@ public class AttendanceController {
         model.addAttribute("attendanceRecords", attendanceRecords);
 
         return "attendance_report"; // Create a Thymeleaf template for the report
+    }
+    // Method to handle parent search
+    @GetMapping("/parent")
+    public String parentForm(Model model) {
+        model.addAttribute("parentForm", new ParentForm());
+        return "parentForm"; // Create a Thymeleaf template for the parent form
+    }
+
+    @PostMapping("/parent")
+    public String searchStudent(@ModelAttribute("parentForm") ParentForm parentForm, Model model) {
+        String studentName = parentForm.getStudentName();
+        List<AttendanceRecord> studentAttendanceRecords = AttendanceDatabase.getAllAttendanceRecords()
+                .stream()
+                .filter(record -> record.getStudentName().equalsIgnoreCase(studentName))
+                .collect(Collectors.toList());
+
+        model.addAttribute("studentAttendanceRecords", studentAttendanceRecords);
+
+        return "parentResult"; // Create a Thymeleaf template to display the results
     }
 }
 
