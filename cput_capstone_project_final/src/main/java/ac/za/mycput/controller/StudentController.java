@@ -9,8 +9,9 @@ Handle request made by the client
 
 
 import ac.za.mycput.entity.Student;
-import ac.za.mycput.service.Interface.DepartmentService;
-import ac.za.mycput.service.Interface.StudentService;
+
+import ac.za.mycput.service.impl.Interface.DepartmentService;
+import ac.za.mycput.service.impl.Interface.StudentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

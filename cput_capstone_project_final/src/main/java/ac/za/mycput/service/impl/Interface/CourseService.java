@@ -1,4 +1,4 @@
-package ac.za.mycput.service.Interface;
+package ac.za.mycput.service.impl.Interface;
 /*
 
  */
@@ -15,11 +15,15 @@ public interface CourseService {
 
     Course updateCourse(Course course);
 
-    void deleteCourseById(Long id);
+
 
     Course getCourseById(Long id);
 
+    Course getCourseName(String courseName);
+
     Course getByCourseCode(String courseCode);
+
+    void deleteByCourseName(String courseName);
 }
 
 
