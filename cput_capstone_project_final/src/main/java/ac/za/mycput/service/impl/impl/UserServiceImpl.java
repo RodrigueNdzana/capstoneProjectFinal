@@ -1,4 +1,4 @@
-package ac.za.mycput.service.impl;
+package ac.za.mycput.service.impl.impl;
 
 
 
@@ -8,7 +8,8 @@ import ac.za.mycput.entity.User;
 import ac.za.mycput.repository.AdministratorRepository;
 import ac.za.mycput.repository.RoleRepository;
 import ac.za.mycput.repository.UserRepository;
-import ac.za.mycput.service.Interface.UserService;
+
+import ac.za.mycput.service.impl.Interface.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.RedirectView;
@@ -153,6 +154,22 @@ private UserService userService;
         return admins.stream().map((administrator) -> convertEntityToDtoAdmin(administrator))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.findUserById(id);
+    }
+
+    @Override
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public User updateUserDetail(User existingUser) {
+        return userRepository.save(existingUser);
+    }
+
     private Administrator convertEntityToDtoAdmin(Administrator administrator){
         Administrator adminDTO = new Administrator();
         String[] name = administrator.getFirstName().split(" ");

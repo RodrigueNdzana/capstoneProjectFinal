@@ -9,11 +9,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CourseRepository extends JpaRepository<Course,Long> {
     //Course findCourseByCourseCode(String courseCode);
-    void deleteCourseById(Long id);
+
 
     Course findCourseById(Long id);
 
     Course getByCourseCode(String courseCode);
+
+    Course findByCourseName(String courseName);
+
+    void deleteByCourseName(String courseName);
 }
 
 

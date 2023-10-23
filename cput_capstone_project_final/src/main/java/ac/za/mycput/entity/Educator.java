@@ -4,11 +4,13 @@ package ac.za.mycput.entity;
 /*
 
  */
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.*;
-
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -25,18 +27,19 @@ public class Educator {
     @NotEmpty(message = "Educator number can not be empty")
     private String educatorNumber;
 
-    @Column(nullable=false)
+    @Column(name = "educatorName",nullable=false)
     @NotEmpty(message = "Educator name can not be empty")
     private String educatorName;
 
-    @Column(nullable = false)
+    @Column(name = "educatorAddress", nullable = false)
     private String educatorAddress;
 
-    @Column(nullable = false)
+    @Column(name = "educatorGender",nullable = false)
     private String educatorGender;
 
-
-
+    @ManyToOne
+    @JoinColumn(name = "courseName")
+    private Course course;
 
 }
 

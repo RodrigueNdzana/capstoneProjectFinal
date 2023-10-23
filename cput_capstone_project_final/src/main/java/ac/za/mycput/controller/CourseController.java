@@ -10,13 +10,18 @@ Handle request made by the client
 
 
 import ac.za.mycput.entity.Course;
-import ac.za.mycput.service.Interface.CourseService;
+import ac.za.mycput.service.impl.Interface.CourseService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:8080")
@@ -29,7 +34,7 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-//    @PostMapping("/resetSuccessMessageCourse")
+    //    @PostMapping("/resetSuccessMessageCourse")
 //    public ResponseEntity<Void> resetSuccessMessage(HttpSession session) {
 //        session.removeAttribute("successMessage");
 //        return ResponseEntity.ok().build();
@@ -54,6 +59,46 @@ public class CourseController {
     @PostMapping("/courses")
     public String saveCourse(@Validated @ModelAttribute("course") Course course, BindingResult bindingResult, Model model, HttpSession session) {
         Course existingCourse = courseService.getByCourseCode(course.getCourseCode());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate = null;
+        Date endDate = null;
+
+        try {
+            String startDateString = course.getStartDate();
+            String endDateString = course.getEndDate();
+
+            if (startDateString != null && !startDateString.isEmpty() &&
+                    endDateString != null && !endDateString.isEmpty()) {
+                startDate = sdf.parse(startDateString);
+                endDate = sdf.parse(endDateString);
+
+                // check if the start date is less than the end date
+                if (startDate.compareTo(endDate) < 0) {
+                    course.setStartDate(String.valueOf(startDate));
+                    course.setEndDate(String.valueOf(endDate));
+
+                }else if (startDate.compareTo(endDate) == 0) {
+                    // Start date and end date are the same validation
+                    bindingResult.rejectValue("startDate", null,
+                            "start date can not be the same with the end date");
+                }
+                else {
+                    // Handle the case where the start date is not before the end date
+                    // returning an error
+                    bindingResult.rejectValue("startDate", null,
+                            "start date can not be greater than the end date");
+                }
+            } else {
+                // Handle the case where the date strings are empty or null
+
+                bindingResult.rejectValue("startDate", null,
+                        "start date field can not be null");
+                bindingResult.rejectValue("endDate", null,
+                        "end date field can not be null");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         if(existingCourse != null && existingCourse.getCourseCode() != null && !existingCourse.getCourseCode().isEmpty()){
             bindingResult.rejectValue("courseCode", null,
@@ -82,18 +127,28 @@ public class CourseController {
     }
 
     // update data with a specific ID
-    @PostMapping("/courses/{id}")
+    @PostMapping("/course/{id}")
     public String updateCourse(@PathVariable Long id, @ModelAttribute("course") Course course,
-                                Model model,HttpSession session) {
+                               Model model,HttpSession session) {
 
+        // Convert the date input to a java.util.Date
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate = null;
+        Date endDate = null;
+        try {
+            startDate = sdf.parse(course.getStartDate());
+            endDate = sdf.parse(course.getEndDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         // get course from database by id
         Course existingCourse = courseService.getCourseById(id);
         existingCourse.setId(id);
         existingCourse.setCourseCode(course.getCourseCode());
         existingCourse.setCourseDescription(course.getCourseDescription());
         existingCourse.setCourseName(course.getCourseName());
-        existingCourse.setStartDate(course.getStartDate());
-        existingCourse.setEndDate(course.getEndDate());
+        existingCourse.setStartDate(String.valueOf(startDate));
+        existingCourse.setEndDate(String.valueOf(endDate));
         existingCourse.setDepartment(course.getDepartment());
         existingCourse.setClassName(course.getClassName());
 
@@ -104,11 +159,11 @@ public class CourseController {
     }
 
     // handler method to handle delete student request
+    @Transactional
+    @GetMapping("/courses/{courseName}")
+    public String deleteCourse (@PathVariable String courseName,HttpSession session) {
 
-    @GetMapping("/courses/{id}")
-    public String deleteCourse (@PathVariable Long id,HttpSession session) {
-
-        courseService.deleteCourseById(id);
+        courseService.deleteByCourseName(courseName);
         session.setAttribute("successMessage", "Student Successfully Deleted");
         return "redirect:/courses";
     }

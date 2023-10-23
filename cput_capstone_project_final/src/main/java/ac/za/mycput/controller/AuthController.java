@@ -3,7 +3,7 @@ package ac.za.mycput.controller;
 import ac.za.mycput.entity.Administrator;
 import ac.za.mycput.entity.User;
 import ac.za.mycput.security.SecurityService;
-import ac.za.mycput.service.Interface.UserService;
+import ac.za.mycput.service.impl.Interface.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

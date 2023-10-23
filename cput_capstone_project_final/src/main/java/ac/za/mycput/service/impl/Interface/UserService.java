@@ -1,4 +1,4 @@
-package ac.za.mycput.service.Interface;
+package ac.za.mycput.service.impl.Interface;
 
 import ac.za.mycput.entity.Administrator;
 import ac.za.mycput.entity.User;
@@ -23,4 +23,10 @@ public interface UserService {
     void saveAdmin(Administrator admin);
     Administrator findAdminByEmail(String email);
     List<Administrator> findAllAdmin();
+
+    User getUserById(Long id);
+
+    void deleteUserById(Long id);
+
+    User updateUserDetail(User existingUser);
 }

@@ -1,4 +1,4 @@
-package ac.za.mycput.service.Interface;
+package ac.za.mycput.service.impl.Interface;
 
 
 import ac.za.mycput.entity.Department;
