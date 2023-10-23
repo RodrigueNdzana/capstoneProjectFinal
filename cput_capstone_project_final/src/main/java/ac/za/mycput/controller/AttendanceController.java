@@ -2,10 +2,15 @@ package ac.za.mycput.controller;
 
 
 
+<<<<<<< HEAD
 import ac.za.mycput.entity.Attendance;
 import ac.za.mycput.entity.Course;
 import ac.za.mycput.entity.Student;
 import ac.za.mycput.entity.Subject;
+=======
+import ac.za.mycput.database.AttendanceDatabase;
+import ac.za.mycput.entity.*;
+>>>>>>> 7756f35040baaa3b83ce2e9380cce8b355bb9fb3
 import ac.za.mycput.repository.AttendanceRepository;
 import ac.za.mycput.repository.CourseRepository;
 import ac.za.mycput.repository.StudentRepository;
@@ -13,6 +18,7 @@ import ac.za.mycput.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +26,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.List;
+=======
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+>>>>>>> 7756f35040baaa3b83ce2e9380cce8b355bb9fb3
 
 @Controller
 @CrossOrigin(origins = "http://localhost:8080")
@@ -81,5 +94,27 @@ public class AttendanceController {
 
         return "attendance_report"; // Create a Thymeleaf template for the report
     }
+<<<<<<< HEAD
+=======
+    // Method to handle parent search
+    @GetMapping("/parent")
+    public String parentForm(Model model) {
+        model.addAttribute("parentForm", new ParentForm());
+        return "parentForm"; // Create a Thymeleaf template for the parent form
+    }
+
+    @PostMapping("/parent")
+    public String searchStudent(@ModelAttribute("parentForm") ParentForm parentForm, Model model) {
+        String studentName = parentForm.getStudentName();
+        List<AttendanceRecord> studentAttendanceRecords = AttendanceDatabase.getAllAttendanceRecords()
+                .stream()
+                .filter(record -> record.getStudentName().equalsIgnoreCase(studentName))
+                .collect(Collectors.toList());
+
+        model.addAttribute("studentAttendanceRecords", studentAttendanceRecords);
+
+        return "parentResult"; // Create a Thymeleaf template to display the results
+    }
+>>>>>>> 7756f35040baaa3b83ce2e9380cce8b355bb9fb3
 }
 

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .present {
+            color: #28a745;
+        }
+
+        .absent {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+<h1>Search Results</h1>
+<p th:text="'Searched Value: ' + ${searchedValue}"></p>
+<table>
+    <tr>
+        <th>Student Name</th>
+        <th>Subject</th>
+        <th>Attendance Status</th>
+    </tr>
+    <tr th:each="record : ${studentAttendanceRecords}">
+        <td th:text="${record.studentName}"></td>
+        <td th:text="${record.subject}"></td>
+        <td th:class="${record.attendanceStatus} ? 'present' : 'absent'" th:text="${record.attendanceStatus} ? 'Present' : 'Absent'"></td>
+    </tr>
+</table>
+</body>
+</html>
+
